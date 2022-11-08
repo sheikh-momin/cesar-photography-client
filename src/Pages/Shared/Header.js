@@ -4,7 +4,14 @@ import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 const Header = () => {
   const {user,logOut}=useContext(AuthContext)
-  
+  const handleSignOut =()=>{
+    logOut()
+      .then(() => {
+        // Sign-out successful.
+      }).catch((error) => {
+        // An error happened.
+      });
+  }
 
 
 
