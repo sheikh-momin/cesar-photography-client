@@ -1,8 +1,38 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
+
 
 const LogIn = () => {
+  const [error, setError] = useState('')
+  const { signIn } = useContext(AuthContext)
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || '/';
+
+  const handleSubmit= event =>{
+    event.preventDefault()
+    const form = event.target
+    const email = form.email.value
+    const password = form.password.value
+    signIn(email, password)
+      .then(result => {
+        const user = result.user
+        console.log(user)
+        form.reset()
+        setError('')
+        navigate(from, { replace: true })
+      })
+      .catch(error => {
+        console.error(error)
+        setError(error.message)
+      })
+
+
+  }
   return (
-    <form className="hero min-h-screen bg-base-200">
+    <form onSubmit={handleSubmit} className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left">
           <h1 className="text-5xl font-bold">Login now!</h1>
@@ -14,20 +44,20 @@ const LogIn = () => {
               <label className="label">
                 <span className="label-text">Email</span>
               </label>
-              <input type="text" placeholder="email" className="input input-bordered" />
+              <input name='email' type="text" placeholder="email" className="input input-bordered" />
             </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Password</span>
               </label>
-              <input type="text" placeholder="password" className="input input-bordered" />
-              <label className="label">
-                <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-              </label>
+              <input name='password' type="password" placeholder="password" className="input input-bordered" />
+              
             </div>
             <div className="form-control mt-6">
               <button className="btn btn-primary">Login</button>
+              <Link className='my-3' to='/login'>If you don't have an account then Sign In first!</Link>
             </div>
+            <div><p>{error}</p></div>
           </div>
         </div>
       </div>

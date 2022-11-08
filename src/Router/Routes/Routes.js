@@ -4,7 +4,9 @@ import PageNotFound from '../../Pages/404/404';
 import Blogs from '../../Pages/Blogs/Blogs';
 import Home from '../../Pages/Home/Home/Home';
 import LogIn from '../../Pages/LogIn/LogIn';
+import Serves from '../../Pages/Serves/Serves';
 import SignIn from '../../Pages/SignIn/SignIn';
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
 
 
 
@@ -29,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: '/signin',
         element: <SignIn></SignIn>
+      },
+      {
+        path: '/serves',
+        element: <PrivateRoute><Serves></Serves></PrivateRoute>
       },
       {
         path: '*',
