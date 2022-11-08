@@ -10,8 +10,17 @@ const SignIn = () => {
 
 
   const googleProvider = new GoogleAuthProvider()
-  const handleGoogleSignIn = () => {
-    
+  
+
+  const githubProvider = new GithubAuthProvider()
+  const handleGithubSignIN = () => {
+    githubSignIn(githubProvider)
+      .then(result => {
+        const user = result.user
+        console.log(user)
+      })
+      .catch(error => console.error(error))
+  }
 
 
   const handleSubmit = (event) => {
