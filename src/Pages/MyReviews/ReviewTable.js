@@ -1,12 +1,16 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 
+import toast, { Toaster } from 'react-hot-toast';
+
+const notify = () => toast('Delete Successfully');
+
 
 const ReviewTable = ({ review, handleDelete }) => {
   const { user } = useContext(AuthContext);
   const { _id, email, message } = review;
   const [reviewDetail, setReviewDetail] = useState([])
-  console.log(user)
+
 
 
 
@@ -16,14 +20,18 @@ const ReviewTable = ({ review, handleDelete }) => {
   return (
     <tr>
       <th>
-        <label>
-          <button
-            onClick={() => handleDelete(_id)}
-            className="btn btn-circle btn-outline"
-          >
-            X
-          </button>
+        <label >
+          <div onClick={notify}>
+            <button
+              onClick={() => handleDelete(_id)}
+              className="btn btn-circle btn-outline"
+            >
+              X
+            </button>
+          </div>
+          
         </label>
+        <Toaster></Toaster>
       </th>
       <td>
         <div className="flex items-center space-x-3">

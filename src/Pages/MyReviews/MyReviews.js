@@ -29,7 +29,6 @@ const MyReviews = () => {
         .then((res) => res.json())
         .then((data) => {
     if (data.deletedCount > 0) {
-      alert("Deleted successfully");
       const remaining = reviews.filter((ord) => ord._id !== id);
       setReviews(remaining);
     }
@@ -57,7 +56,15 @@ return (
           </tr>
         </thead>
         <tbody>
-          {reviews.map(review => <ReviewTable key={review._id} review={review} handleDelete={handleDelete}></ReviewTable>)}
+          {reviews.map(review => 
+              <ReviewTable key={review._id} review={review} handleDelete={handleDelete}></ReviewTable>
+          )}
+          {
+            reviews.length === 0 ?
+              <div className='my-4'><h1>No reviews were added</h1></div>
+              :
+              <p></p>
+          }
 
         </tbody>
 

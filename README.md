@@ -1,3 +1,35 @@
+Website Name: Cesar Photography
+Live Site: 
+
+1. React-Bootstrap
+2. React-Router
+3. React-context
+4. Firebase-Authentication
+5. React-Icon
+6. Toast
+7. Private-Route
+8. Login with email-password, google, github
+9. Create my own backend server
+10. connect to mongodb
+11.load and upload from mongodb
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
