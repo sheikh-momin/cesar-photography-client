@@ -1,9 +1,17 @@
 import React from 'react';
+import { useLoaderData } from 'react-router-dom';
+import useTitle from '../../Hooks/useTitle';
+import ServiceCard from './ServiceCard';
 
 const Serves = () => {
+  useTitle('service')
+  const allServices = useLoaderData()
   return (
-    <div>
-      <h2>Serves</h2>
+    
+    <div className=''>
+      {
+        allServices.map(service => <ServiceCard key={service._id} service={service}></ServiceCard>)
+      }
     </div>
   );
 };

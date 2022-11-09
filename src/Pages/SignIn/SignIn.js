@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
+import useTitle from '../../Hooks/useTitle';
 
 const SignIn = () => {
+  useTitle('signIn')
   const [error, setError] = useState('')
   const { googleSignIn, githubSignIn, createUser } = useContext(AuthContext)
 
@@ -74,13 +76,13 @@ const SignIn = () => {
               <label className="label">
                 <span className="label-text">Email</span>
               </label>
-              <input name='email' type="text" placeholder="email" className="input input-bordered" />
+              <input name='email' type="text" placeholder="email" className="input input-bordered" required/>
             </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Password</span>
               </label>
-              <input name='password' type="password" placeholder="password" className="input input-bordered" />
+              <input name='password' type="password" placeholder="password" className="input input-bordered" required/>
 
             </div>
             <div className="form-control mt-6">

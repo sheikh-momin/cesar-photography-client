@@ -11,6 +11,7 @@ import PrivateRoute from '../PrivateRoute/PrivateRoute';
 
 
 
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -34,7 +35,8 @@ const router = createBrowserRouter([
       },
       {
         path: '/serves',
-        element: <PrivateRoute><Serves></Serves></PrivateRoute>
+        element: <PrivateRoute><Serves></Serves></PrivateRoute>,
+        loader: () => fetch('http://localhost:5000/services')
       },
       {
         path: '*',

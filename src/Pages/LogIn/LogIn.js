@@ -1,9 +1,11 @@
 import React, { useContext, useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link,  useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
+import useTitle from '../../Hooks/useTitle';
 
 
 const LogIn = () => {
+  useTitle('login')
   const [error, setError] = useState('')
   const { signIn } = useContext(AuthContext)
   const navigate = useNavigate();
@@ -21,8 +23,8 @@ const LogIn = () => {
         const user = result.user
         console.log(user)
         form.reset()
-        setError('')
         navigate(from, { replace: true })
+        setError('')
       })
       .catch(error => {
         console.error(error)
@@ -44,13 +46,13 @@ const LogIn = () => {
               <label className="label">
                 <span className="label-text">Email</span>
               </label>
-              <input name='email' type="text" placeholder="email" className="input input-bordered" />
+              <input name='email' type="text" placeholder="email" className="input input-bordered" required/>
             </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Password</span>
               </label>
-              <input name='password' type="password" placeholder="password" className="input input-bordered" />
+              <input name='password' type="password" placeholder="password" className="input input-bordered" required/>
               
             </div>
             <div className="form-control mt-6">

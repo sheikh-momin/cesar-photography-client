@@ -1,9 +1,11 @@
 import React from 'react';
+import useTitle from '../../../Hooks/useTitle';
 import Serveces from '../../Shared/Serveces';
 import Banner from '../Banner/Banner';
 import Card from '../Card/Card';
 
 const Home = () => {
+  useTitle('home')
   return (
     <div>
       <div className='grid grid-cols-1 md:grid-cols-12'>
