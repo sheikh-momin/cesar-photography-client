@@ -2,7 +2,7 @@ import React from 'react';
 
 const Card = () => {
   return (
-    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-4'>
+    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4'>
       <div className="card bg-base-100 shadow-2xl">
         <figure><img src="https://img.freepik.com/free-photo/young-beautiful-woman-with-long-blond-hair-white-dress-wheat-field-early-morning-sunrise-summer-is-time-dreamers-flying-hair-woman-running-across-field-rays_1321-2431.jpg?w=996&t=st=1667850476~exp=1667851076~hmac=36b20b2fcac6c15c1e268edc0c4e13545540537d835bdef719fe5f4911f2e941" alt="" /></figure>
         <div className="card-body">

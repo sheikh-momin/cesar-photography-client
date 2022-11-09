@@ -27,6 +27,18 @@ const Header = () => {
             <Link to='/serves'>Service</Link>
             
             <Link to='/blogs'>Blogs</Link>
+
+            {user?.uid ?
+              <div>
+                <Link onClick={handleSignOut} className='text-decoration-none  fw-semibold m-lg-auto  me-lg-3' to='/login'><button className="btn btn-outline btn-secondary">Log Out</button></Link>
+
+              </div>
+              :
+              <div>
+                <Link className='text-decoration-none text-success fw-semibold m-lg-auto  me-lg-3' to='/login'><button className="btn btn-outline btn-success">Log In</button></Link>
+                <Link className='text-decoration-none text-success fw-semibold m-lg-auto  me-lg-3' to='/signin'> <button className="btn btn-outline btn-warning">Sign In</button></Link>
+              </div>
+            }
             
           </ul>
         </div>
@@ -39,20 +51,18 @@ const Header = () => {
           <Link className='text-lg font-semibold mt-4 mr-3' to='/serves'>Service</Link>
           <Link className='text-lg font-semibold mt-4 mr-3' to='/blogs'>Blogs</Link>
           
-        </ul>
-      </div>
-      <div className="navbar-end">
-        {user?.uid ?
-          <div>
-            <Link onClick={handleSignOut} className='text-decoration-none  fw-semibold m-lg-auto  me-lg-3' to='/login'><button className="btn btn-outline btn-secondary">Log Out</button></Link>
+          {user?.uid ?
+            <div>
+              <Link onClick={handleSignOut} className='text-decoration-none  fw-semibold m-lg-auto  me-lg-3' to='/login'><button className="btn btn-outline btn-secondary">Log Out</button></Link>
 
-          </div>
-          :
-          <div>
-            <Link className='text-decoration-none text-success fw-semibold m-lg-auto  me-lg-3' to='/login'><button className="btn btn-outline btn-success">Log In</button></Link>
-            <Link className='text-decoration-none text-success fw-semibold m-lg-auto  me-lg-3' to='/signin'> <button className="btn btn-outline btn-warning">Sign In</button></Link>
-          </div>
-        }
+            </div>
+            :
+            <div>
+              <Link className='text-decoration-none text-success fw-semibold m-lg-auto  me-lg-3' to='/login'><button className="btn btn-outline btn-success">Log In</button></Link>
+              <Link className='text-decoration-none text-success fw-semibold m-lg-auto  me-lg-3' to='/signin'> <button className="btn btn-outline btn-warning">Sign In</button></Link>
+            </div>
+          }
+        </ul>
       </div>
     </div>
   );

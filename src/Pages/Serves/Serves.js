@@ -8,7 +8,7 @@ const Serves = () => {
   const allServices = useLoaderData()
   return (
     
-    <div className=''>
+    <div className='mt-5'>
       {
         allServices.map(service => <ServiceCard key={service._id} service={service}></ServiceCard>)
       }
