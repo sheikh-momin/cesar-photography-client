@@ -1,10 +1,28 @@
 import React, { useContext } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 
 const ServiceDetails = () => {
-  const { title, description, img, ratings , price, views} = useLoaderData()
+  const { title, description, img, ratings , price, views, _id} = useLoaderData()
   const {user} = useContext(AuthContext)
+
+  const handleComment= event =>{
+    event.preventDefault()
+    const form = event.target;
+    const email = user?.email || 'unregistered';
+    const message = form.message.value;
+
+
+    const comment ={
+      service: _id,
+      serviceName: title,
+      email,
+      message
+    }
+
+    
+  }
+
   return (
     <div className='mt-10 grid md:grid-cols-2 grid-cols-1' >
       <div className="card w-4/6 bg-base-100 shadow-xl m-auto mb-5 ">
@@ -23,29 +41,34 @@ const ServiceDetails = () => {
         </div>
       </div>
 
-      <form className="hero min-h-screen bg-base-200">
-        <div className="hero-content flex-col lg:flex-row-reverse">
-          <div className="text-center lg:text-left">
-            <h1 className="text-5xl font-bold">Add your Comment!</h1>
-          </div>
-          <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <div className="card-body">
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Email</span>
-                </label>
-                <input type="email" name='email' placeholder="email" defaultValue={user?.email} className="input input-bordered" readOnly required/>
+      {
+        user?.uid ? 
+          <form onSubmit={handleComment} className="hero min-h-screen bg-base-200">
+            <div className="hero-content flex-col lg:flex-row-reverse">
+              <div className="text-center lg:text-left">
+                <h1 className="text-5xl font-bold">Add your Comment!</h1>
               </div>
-              <div className="form-control">
-                <textarea placeholder='Your Message' name="comment" id="" cols="30" rows="10"></textarea>
-              </div>
-              <div className="form-control mt-6">
-                <button className="btn btn-primary">Submit</button>
+              <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                <div className="card-body">
+                  <div className="form-control">
+                    <label className="label">
+                      <span className="label-text">Email</span>
+                    </label>
+                    <input type="email" name='email' placeholder="email" defaultValue={user?.email} className="input input-bordered" readOnly required />
+                  </div>
+                  <div className="form-control">
+                    <textarea placeholder='Your Message' name="message" id="" cols="30" rows="10"></textarea>
+                  </div>
+                  <div className="form-control mt-6">
+                    <button className="btn btn-primary">Submit</button>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-      </form>
+          </form>
+          :
+          <Link to='/login'>Please log in for review!</Link>
+      }
 
     </div>
   );

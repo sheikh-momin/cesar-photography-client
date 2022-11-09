@@ -30,6 +30,8 @@ const Header = () => {
 
             {user?.uid ?
               <div>
+                <Link to='/myreview'>My reviews</Link>
+                <Link to='/addservice'>Add service</Link>
                 <Link onClick={handleSignOut} className='text-decoration-none  fw-semibold m-lg-auto  me-lg-3' to='/login'><button className="btn btn-outline btn-secondary">Log Out</button></Link>
 
               </div>
@@ -53,6 +55,8 @@ const Header = () => {
           
           {user?.uid ?
             <div>
+              <Link className='text-lg font-semibold mt-3 mr-3' to='/myreview'>My reviews</Link>
+              <Link className='text-lg font-semibold mt-3 mr-3' to='/addservice'>Add service</Link>
               <Link onClick={handleSignOut} className='text-decoration-none  fw-semibold m-lg-auto  me-lg-3' to='/login'><button className="btn btn-outline btn-secondary">Log Out</button></Link>
 
             </div>
