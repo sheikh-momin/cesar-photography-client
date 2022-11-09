@@ -6,22 +6,36 @@ const ServiceDetails = () => {
   const { title, description, img, ratings , price, views, _id} = useLoaderData()
   const {user} = useContext(AuthContext)
 
-  const handleComment= event =>{
-    event.preventDefault()
-    const form = event.target;
-    const email = user?.email || 'unregistered';
-    const message = form.message.value;
+const handleComment = event => {
+  event.preventDefault();
+  const form = event.target;
+  const email = form.email.value;
+  const message = form.message.value;
 
 
-    const comment ={
-      service: _id,
-      serviceName: title,
-      email,
-      message
-    }
+  const review = {
+    message,
+    email
 
-    
   }
+  fetch('http://localhost:5000/reviews', {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json'
+    },
+    body: JSON.stringify(review)
+  })
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+      if (data.acknowledged) {
+        alert('Review posted');
+        form.reset();
+      }
+    })
+    .catch(er => console.error(er));
+
+}
 
   return (
     <div className='mt-10 grid md:grid-cols-2 grid-cols-1' >
