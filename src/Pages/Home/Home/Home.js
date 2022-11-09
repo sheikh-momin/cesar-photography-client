@@ -1,5 +1,6 @@
 import React from 'react';
 import useTitle from '../../../Hooks/useTitle';
+import UserAddedService from '../../../UserAddedService/UserAddedService';
 import Serveces from '../../Shared/Serveces';
 import Banner from '../Banner/Banner';
 import Card from '../Card/Card';
@@ -33,6 +34,7 @@ const Home = () => {
           <img className='w-30' src="https://img.freepik.com/premium-photo/happy-woman-photographer-joyfully-holding-slr-camera-taking-picture-local-people-lifestyle-america-female-lens-man-visit-pier-san-francisco-summer-holidays-hobby-photographing_678158-6569.jpg?w=996" alt="" />
         </div>
       </div>
+      <div><UserAddedService></UserAddedService></div>
     </div>
   );
 };
