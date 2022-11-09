@@ -1,8 +1,8 @@
 import React from "react";
-
-
-// import 'react-toastify/dist/ReactToastify.css';
 import useTitle from "../../Hooks/useTitle";
+import toast, { Toaster } from 'react-hot-toast';
+
+const notify = () => toast('Add service successfully.');
 
 
 const AddServices = () => {
@@ -35,7 +35,6 @@ const AddServices = () => {
       .then((data) => {
         console.log(data);
         if (data.acknowledged) {
-          alert('Successfully Addeded Service');
           form.reset();
         }
 
@@ -104,7 +103,8 @@ const AddServices = () => {
               <textarea name="description" id="" cols="30" rows="10"></textarea>
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary">Submit</button>
+              <button onClick={notify} className="btn btn-primary">Submit</button>
+              <Toaster></Toaster>
             </div>
           </div>
         </div>
