@@ -8,7 +8,6 @@ const PrivateRoute = ({ children }) => {
   const location = useLocation();
 
   if (loading) {
-    console.log('yes loading found');
     return <div><button className="btn loading">loading</button></div>
   }
 
