@@ -21,9 +21,10 @@ const ReviewTable = ({ review, handleDelete }) => {
     <tr>
       <th>
         <label >
-          <div onClick={notify}>
+          <div onClick={() => handleDelete(_id)}>
             <button
-              onClick={() => handleDelete(_id)}
+              
+              onClick={notify}
               className="btn btn-circle btn-outline"
             >
               X
