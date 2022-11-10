@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Serveces = () => {
   const [categories, setCategories] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:5000/serviceslimit')
+    fetch('https://cesar-photography-server.vercel.app/serviceslimit')
       .then(res => res.json())
       .then(data => setCategories(data))
   }, [])

@@ -40,12 +40,12 @@ const router = createBrowserRouter([
       {
         path: '/serves',
         element: <Serves></Serves>,
-        loader: () => fetch('http://localhost:5000/services')
+        loader: () => fetch('https://cesar-photography-server.vercel.app/services')
       },
       {
         path: '/serves/:id',
         element: <ServiceDetails></ServiceDetails>,
-        loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`)
+        loader: ({ params }) => fetch(`https://cesar-photography-server.vercel.app/services/${params.id}`)
       },
       {
         path: '/myreview',

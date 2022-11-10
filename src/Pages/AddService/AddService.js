@@ -24,7 +24,7 @@ const AddServices = () => {
       price,
       description,
     };
-    fetch("http://localhost:5000/services", {
+    fetch("https://cesar-photography-server.vercel.app/services", {
       method: "POST",
       headers: {
         "content-type": "application/json",
