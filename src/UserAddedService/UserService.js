@@ -35,8 +35,8 @@ const UserService = ({ service }) => {
           <div className="py-5 ">
 
             <p>
-              {description.length > 100 ? (
-                <div>{description.slice(0, 100) + "..."}</div>
+              {description?.length > 100 ? (
+                <div><p>{description.substring(0, 100)} <Link className='text-primary'>see all...</Link></p></div>
               ) : (
                 description
               )}

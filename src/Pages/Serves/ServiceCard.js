@@ -31,7 +31,7 @@ const ServiceCard = ({service}) => {
         <h1 className="card-title text-lime-600 text-2xl">
           {title}
         </h1>
-      <p>{description.length > 100 ?
+      <p>{description?.length > 100 ?
           <p>{description.substring(0, 100)} <Link className='text-primary'>see all...</Link></p>
         : description
           }</p>
