@@ -26,13 +26,15 @@ const handleComment = event => {
   const form = event.target;
   const email = form.email.value;
   const id = form.id.value;
+  const title = form.title.value;
   const message = form.message.value;
 
 
   const review = {
     message,
     email,
-    id
+    id,
+    title
 
   }
   fetch('http://localhost:5000/reviews', {
@@ -90,9 +92,15 @@ const handleComment = event => {
                     </div>
                     <div className="form-control">
                       <label className="label">
+                        <span className="label-text">Title</span>
+                      </label>
+                      <input type="text" name='title' placeholder="title" defaultValue={title} className="input input-bordered" readOnly required />
+                    </div>
+                    <div className="form-control">
+                      <label className="label">
                         <span className="label-text">Email</span>
                       </label>
-                      <input type="text" name='email' placeholder="email" defaultValue={user?.email} className="input input-bordered" readOnly required />
+                      <input type="email" name='email' placeholder="email" defaultValue={user?.email} className="input input-bordered" readOnly required />
                     </div>
                     <div className="form-control">
                       <textarea placeholder='Your Message' name="message" id="" cols="30" rows="10"></textarea>
@@ -105,7 +113,7 @@ const handleComment = event => {
               </div>
             </form>
             :
-            <Link to='/login'>Please log in for review!</Link>
+            <Link className='text-center font-bold text-3xl text-red-700 flex items-center justify-center' to='/login'>Please log in for review!</Link>
         }
 
       </div>
@@ -114,7 +122,7 @@ const handleComment = event => {
         <h1 className='text-2xl mb-5 text-lime-600 font-bold'>All Reviews fo {title}</h1>
         {
           reviews.map(review=>
-            <div className='m-auto mb-5 bg-stone-600 shadow-xl w-1/2 rounded-xl'>
+            <div className='m-auto mb-5 bg-stone-600 shadow-xl w-auto md:w-1/2 rounded-xl'>
               <h4 className='text-xl mb-3'>{review.email}</h4>
               <p className='text-lg'>{review.message}</p>
           </div>)

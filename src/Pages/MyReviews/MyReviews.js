@@ -6,14 +6,25 @@ import ReviewTable from './ReviewTable';
 
 
 const MyReviews = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
   useTitle('MyReviews');
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/reviews?email=${user?.email}`)
-    .then(res => res.json())
-      .then(data => setReviews(data))
+    fetch(`http://localhost:5000/reviews?email=${user?.email}`,{
+      headers:{
+        authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    })
+    .then(res => {
+      if(res.status === 401 || res.status === 403){
+        logOut()
+      }
+      return res.json()
+    })
+      .then(data => {
+        setReviews(data)
+      })
 
   }, [user?.email])
 
@@ -50,9 +61,10 @@ return (
               </label>
             </th>
             <th>Name</th>
+            <th>Title</th>
             <th>Reviews</th>
-            <th>Ratings</th>
-            <th></th>
+            <th>Update</th>
+            
           </tr>
         </thead>
         <tbody>

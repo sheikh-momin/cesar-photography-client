@@ -15,7 +15,7 @@ const Home = () => {
       </div>
       <Card></Card>
       <div>
-        <h2 className='mb-3 mt-10 text-2xl'>POPULAR POSTS</h2>
+        <h2 className='mb-3 mt-10 text-3xl text-lime-400'>POPULAR POSTS</h2>
         <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
           <img className='w-30' src="https://img.freepik.com/free-photo/monstera-leaves-rays-sunlight-stripes-shadow-from-blinds-bright-red-background-closeup-selective-focus-wallpaper-ideas_166373-2157.jpg?w=996&t=st=1667851084~exp=1667851684~hmac=647a6b37357fe4fa8af0c8e6cadcb1111004991df7aba4107d03cfa3a87ad0e7" alt="" />
 
@@ -35,7 +35,7 @@ const Home = () => {
         </div>
       </div>
       <div className='mt-10'>
-      <h1 className='text-2xl font-semibold'>Your Services</h1>
+        <h1 className='text-3xl text-lime-400 font-semibold'>Your Services</h1>
       <UserAddedService></UserAddedService>
       </div>
     </div>

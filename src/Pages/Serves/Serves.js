@@ -12,6 +12,12 @@ const Serves = () => {
       {
         allServices.map(service => <ServiceCard key={service._id} service={service}></ServiceCard>)
       }
+      {
+        !allServices ? 
+          <div><button className="btn loading">loading</button></div>
+          :
+          <></>
+      }
     </div>
   );
 };
